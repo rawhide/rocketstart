@@ -1,0 +1,14 @@
+<div>
+  <%= form_for @entry, :url => remined_complete_password_path do |f| %>
+    <table>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= f.text_field :email, :size => '60' %></td>
+      </tr>
+      <tr>
+      <td colspan="2" align="center">
+        <%= f.submit %>
+      </td>
+    </table>
+  <% end %>
+</div>

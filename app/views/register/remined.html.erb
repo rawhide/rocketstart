@@ -1,0 +1,20 @@
+<h2>Hello! <%= @user.name %></h2>
+<div>
+  <%= form_for @user, :url => register_path do |f| %>
+    <table>
+      <tr>
+        <td>パスワード</td>
+        <td><%= f.password_field :password, :size => '60' %></td>
+      </tr>
+      <tr>
+        <td>パスワード（確認用）</td>
+        <td><%= f.password_field :password_confirmation, :size => '60' %></td>
+      </tr>
+      <tr>
+      <td colspan="2" align="center">
+        <%= f.hidden_field :email %>
+        <%= f.submit %>
+      </td>
+    </table>
+  <% end %>
+</div>
