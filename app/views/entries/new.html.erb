@@ -8,8 +8,9 @@
       <tr>
       <td colspan="2" align="center">
         <%= f.hidden_field :remined %>
-        <%= f.submit %>
+        <%= f.submit 'Send Mail' %>
       </td>
     </table>
   <% end %>
 </div>
+<div><%= link_to 'Back', root_path %>

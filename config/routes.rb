@@ -10,20 +10,13 @@ Oauth::Application.routes.draw do
   end
   resource :register, :only => [:new, :create, :update], :controller => 'register'
 
-=begin
-  resource :password, :controller => 'password', :only => [:edit, :update] do
-    get 'remined' => 'password#remined'
-    post 'remined_complete' => 'password#remined_complete'
-  end
-=end
-
   match "/register/new/:token" => "register#new", :as => :register_with_token
   match "/register/remined/:token" => "register#remined", :as => :register_remined_with_token
 
-  match '/home' => 'general#home'
-
   get '/logout' => 'sessions#destroy'
   get '/login' => 'sessions#destroy'
+
+  match '/home' => 'general#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

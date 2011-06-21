@@ -1,11 +1,14 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.8'
+gem 'rake', '=0.8.7'
+gem 'warden', '=1.0.3'
+gem 'rails_warden', '=0.5.2'
+
 
 gem 'omniauth'
 gem 'nifty-generators', :group => :development
 
-gem 'rails_warden'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
