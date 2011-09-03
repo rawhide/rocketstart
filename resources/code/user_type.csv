@@ -1,9 +1,0 @@
-title,登録状況
-#DATA
-value:integer,key,disp,position:integer
-1,Administrator,個人情報保護責任者,1
-2,President,社長,2
-3,EdicationalOfficer,教育責任者,3
-4,SystemOfficer,情報システム・リスク責任者,4
-5,Staff,従業員,5
-6,AuditOfficer,監査責任者,6

@@ -1,6 +1,0 @@
-title,登録状況
-#DATA
-value:integer,key,disp,position:integer
-1,PENDING,申請中,1
-2,ACCEPT,承認済み,2
-3,BACK,差し戻し,3

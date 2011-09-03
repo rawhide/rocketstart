@@ -1,5 +1,0 @@
-title,登録状況
-#DATA
-value:integer,key,disp,position:integer
-1,INTERIM,仮登録,1
-2,REGISTED,本登録済み,2

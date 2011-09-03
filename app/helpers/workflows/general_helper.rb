@@ -1,2 +1,0 @@
-module Workflows::GeneralHelper
-end

@@ -1,6 +1,0 @@
-`date > hoge`
-require 'rubygems'
-require 'action_view'
-RAILS_ROOT=""
-require './lib/tasks/railstar'
-require './lib/railstar'
