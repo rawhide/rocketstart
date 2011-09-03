@@ -1,0 +1,29 @@
+<div id="entry">
+  <br />
+  <% if flash[:error] %>
+    <div id="error_explanation">
+      <ul>
+        <li><span class="red"><%= flash[:error] %></span></li>
+      </ul>
+    </div>
+  <% end %>
+  <div class="mgs">
+    <p>先ほど登録したパスワードをもう一度入力してください</p>
+    <%= form_for :user, :url => users_register_path do |f| %>
+      <table>
+        <tr>
+          <td>ログインパスワード</td>
+          <td><%= f.password_field :password, :size => '16', :required => true %></td>
+          <td>半角英数で6文字以上</td>
+        </tr>
+      </table>
+      <%= hidden_field_tag :code, @token.code %>
+      <%#= f.hidden_field :email %>
+      <br />
+      <center><%= f.submit '登録' %></center>
+    <% end %>
+  </div>
+  <br />
+  <br />
+</div>
+

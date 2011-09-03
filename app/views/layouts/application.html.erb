@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Railstar</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%#= stylesheet_link_tag    "login_navi" %>
+    <%#= stylesheet_link_tag    "railstar/base" %>
+    <%#= stylesheet_link_tag    "railstar/form" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield :header -%>
+  </head>
+  <body>
+
+  <%= render 'layouts/menu' %>
+  <div id='notice_area'><div id='notice'><%= notice %></div></div>
+
+  <div class="left">&nbsp;</div>
+  <div class="main">
+    <br />
+    <br />
+    <br />
+    <%= yield %>
+    <br />
+    <br />
+    <br />
+    <br />
+  </div>
+  <div class="right">&nbsp;</div>
+
+  <footer class="footer"></footer>
+  </body>
+</html>

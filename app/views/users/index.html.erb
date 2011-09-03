@@ -1,0 +1,54 @@
+<script type="text/javascript">
+<!--
+
+  $(document).ready(function(){
+    $("div.navi").append("&nbsp;<a href='/users/invitation/new'>利用者の追加</a>");
+    $("div.navi").append("&nbsp;<a href='/users/invitation/new'>利用者の追加</a>");
+    $("div.navi").append("&nbsp;<a href='/users/invitation/new'>利用者の追加</a>");
+  });
+
+//-->
+</script>
+    <%#= link_to '利用者の追加', new_users_invitation_path %>
+
+<section>
+<h2>利用者一覧</h2>
+<table class='base'>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>E-Mail</th>
+      <th>権限</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.name %></td>
+      <td><%= u.email %></td>
+      <td><%= u.class::ROLL %></td>
+      <td>
+        <% if current_user.instance_of? ::User::Administrator %>
+          <%= link_to image_tag('s_config.png'), edit_user_path(u) %>
+        <% elsif u.id == current_user.id %>
+          <%= link_to image_tag('s_config.png'), edit_user_path(u) %>
+        <% end %>
+      </td>
+      <td>
+        <% if current_user.instance_of? ::User::Administrator %>
+          <% unless u.instance_of? ::User::Administrator %>
+            <%= link_to image_tag('s_delete.png'), 
+                        user_path(u), 
+                        :confirm => '本当に削除してもよろしいですか？', 
+                        :method => :delete, 
+                        :id => 'remove' %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+</section>

@@ -1,0 +1,17 @@
+<div id='entry'>
+  <br />
+  <p>メールアドレスを入力してください。確認メールが届きます。</p>
+  <%= form_for @user, :url => entry_path do |f| %>
+    <center>
+      <table>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.text_field :email, :size => '30' %></td>
+          <td><%= f.submit '送信' %></td>
+        </tr>
+      </table>
+    </center>
+  <% end %>
+  <br />
+  <br />
+</div>

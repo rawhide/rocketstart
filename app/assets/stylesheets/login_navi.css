@@ -1,0 +1,79 @@
+.logout{
+  position: fixed;
+  _position:absolute;
+  top: 0;
+  right: 20px;
+  z-index: 9999;
+  background: #B0E0E6;
+  -moz-box-shadow: 0 0 8px #444;
+  -webkit-box-shadow: 0 0 8px #444;
+  box-shadow: 0 0 8px #444;
+  opacity: 0.8;
+
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+
+  width:200px;
+  height:50px;
+  text-align:center;
+}
+
+.login{
+  position: fixed;
+  _position:absolute;
+  top: 0;
+  right: 20px;
+  z-index: 9999;
+  background: #B0E0E6;
+  -moz-box-shadow: 0 0 8px #444;
+  -webkit-box-shadow: 0 0 8px #444;
+  box-shadow: 0 0 8px #444;
+  opacity: 0.8;
+
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+
+  width:200px;
+  height:180px;
+  text-align:center;
+
+}
+
+.menu{
+  position: fixed;
+  _position:absolute;
+  bottom: 0;
+  width:100%;
+  z-index: 9999;
+  background: #353535;
+  -moz-box-shadow: 0 0 15px #444;
+  -webkit-box-shadow: 0 0 15px #444;
+  box-shadow: 0 0 15px #444;
+
+  height:50px;
+  overflow:hidden;
+}
+
+.navi{
+  position: fixed;
+  _position:absolute;
+  top: 0;
+  width:100%;
+  z-index: 9998;
+  background: #ffffff;
+  -moz-box-shadow: 0 0 3px #444;
+  -webkit-box-shadow: 0 0 3px #444;
+  box-shadow: 0 0 3px #444;
+
+  height:25px;
+  overflow:hidden;
+  padding-top: 5px;
+}
+
+.navi a{
+  text-decoration: none;
+}
