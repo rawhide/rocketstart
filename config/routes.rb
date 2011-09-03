@@ -1,4 +1,4 @@
-Railstar::Application.routes.draw do
+Rocketstart::Application.routes.draw do
 
   root :to => "general#index"
 
@@ -27,9 +27,6 @@ Railstar::Application.routes.draw do
     match "/register/emailchange/:code" => "email#update", :as => "email_change", :via => :put
     match "/register/emailchange/:code" => "email#edit", :as => "email_change"
 
-    #namespace :entry do
-    #  resources :search, :only => [:index, :create]
-    #end
     resource :register, :only => [:new, :create, :update], :controller => 'register'
     match "/register/remined/:token" => "register#remined", :as => :register_remined_with_token
     match "/register/new/:code" => "register#new", :as => "register_with_token"

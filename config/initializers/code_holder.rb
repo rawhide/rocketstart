@@ -1,4 +1,4 @@
-C = Railstar::CodeHolder
+C = Rocketstart::CodeHolder
 
 code_dir = File.join(Rails.root.to_s, "resources/codes")
 Dir.glob("#{code_dir}/*.csv").each do |f|

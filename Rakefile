@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Railstar::Application.load_tasks
+Rocketstart::Application.load_tasks
