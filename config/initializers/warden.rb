@@ -1,6 +1,6 @@
 Rails.configuration.middleware.use RailsWarden::Manager do |manager|
   manager.default_strategies :password
-  manager.failure_app = SessionsController
+  manager.failure_app = SessionController
 end
 
 class Warden::SessionSerializer

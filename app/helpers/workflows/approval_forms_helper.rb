@@ -1,0 +1,2 @@
+module Workflows::ApprovalFormsHelper
+end

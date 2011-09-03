@@ -1,19 +1,24 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
-gem 'rake', '=0.8.7'
+gem 'rails', '=3.1.0'
 gem 'warden', '=1.0.3'
 gem 'rails_warden', '=0.5.2'
-
-
-gem 'omniauth'
-gem 'nifty-generators', :group => :development
-
+#gem 'rake', '=0.8.7'
+gem 'rake', '=0.9.2'
 
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+
+# Asset template engines
+gem 'sass-rails', "~> 3.1.0.rc"
+gem 'coffee-script'
+gem 'uglifier'
+
+gem 'jquery-rails'
+
+gem 'nokogiri'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -21,20 +26,23 @@ gem 'sqlite3'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
+# To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+group :test, :development do
+  gem "rspec-rails", '2.6.1.beta1'
+  #gem 'machinist', '2.0.0.beta2', :require => 'machinist/active_record'
+  gem 'machinist', '2.0.0.beta2'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'email_spec'
+  gem 'faker'
+  gem 'rr'
+  gem 'database_cleaner', '>=0.6.0.rc.2'
+  gem 'turn', :require => false
+end
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
-gem "mocha", :group => :test
+group :production do
+    gem 'therubyracer-heroku', '0.8.1.pre3'
+    gem 'pg'
+end

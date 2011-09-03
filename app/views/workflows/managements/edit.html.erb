@@ -1,0 +1,17 @@
+
+<h2>「<%= @approval_form.title %>」の編集</h2>
+<%= render :partial => 'form', :locals => {:r => @approval_form} %>
+<br />
+<br />
+<% @approval_form.fields.each do |f| %>
+  <script type="text/javascript"><!-- 
+    o = create_field('<%= f.id %>', '<%= f.title %>', '<%= f.form_type %>');
+    fields.push(o);
+  //--></script>
+<% end %>
+
+<script type="text/javascript">
+<!-- 
+  write_html();
+//-->
+</script>

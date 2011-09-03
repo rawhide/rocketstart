@@ -1,77 +1,49 @@
-Oauth::Application.routes.draw do
+Railstar::Application.routes.draw do
 
-  root :to => "sessions#new"
+  root :to => "general#index"
 
-  resource :session, :only => [:new, :create, :destroy]
-  resource :entry, :only => [:new, :create] do
-    member do
-      get 'remined'
-    end
+  get "/login" => "session#new"
+  match 'logout' => 'session#destroy'
+
+  resource :session, :controller => :session, :only => [:create, :destroy]
+  resource :remined, :only => [:new, :create, :edit, :update], :controller => 'users/remined'
+  resource :entry, :controller => :entry do
+    collection { get(:complete) }
   end
-  resource :register, :only => [:new, :create, :update], :controller => 'register'
 
-  match "/register/new/:token" => "register#new", :as => :register_with_token
-  match "/register/remined/:token" => "register#remined", :as => :register_remined_with_token
+  #userに関する関する責務
+  resources :users
+  namespace :users do
+    resource :entry, :controller => :entry, :only => [:new, :create] do
+      collection { get(:complete) }
+    end
 
-  get '/logout' => 'sessions#destroy'
-  get '/login' => 'sessions#destroy'
+    resource :email, :controller => :email, :only => [:new, :create] do
+      collection do 
+        get :complete
+        get :send_complete
+      end
+    end
+    match "/register/emailchange/:code" => "email#update", :as => "email_change", :via => :put
+    match "/register/emailchange/:code" => "email#edit", :as => "email_change"
 
-  match '/home' => 'general#home'
+    #namespace :entry do
+    #  resources :search, :only => [:index, :create]
+    #end
+    resource :register, :only => [:new, :create, :update], :controller => 'register'
+    match "/register/remined/:token" => "register#remined", :as => :register_remined_with_token
+    match "/register/new/:code" => "register#new", :as => "register_with_token"
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+    resources :invitation, :only => [:new, :create]
+    namespace :invitation do
+      resource :register, :only => [:new, :create], :controller => "register" do
+        collection { get(:complete) }
+      end
+      match "register/new/:code" => "register#new", :as => :register_invitation_with_token
+    end
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  end
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  resource :dashboard, :controller => :dashboard, :only => [:show]
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end

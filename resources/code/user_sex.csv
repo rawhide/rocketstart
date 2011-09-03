@@ -1,0 +1,5 @@
+title,登録状況
+#DATA
+value:integer,key,disp,position:integer
+1,MALE,男,1
+2,FEMALE,女,2

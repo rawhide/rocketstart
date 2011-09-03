@@ -1,0 +1,46 @@
+<script type="text/javascript">
+<!-- 
+  $(document).ready(function(){
+    $("s_check").tablesorter();
+  });
+-->
+</script>
+
+<h2>申請書テンプレート管理</h1>
+<table class="base">
+  <thead>
+  <tr>
+    <th>レポート名</th>
+    <th>作成日時</th>
+    <th>回答者数</th>
+    <th>一覧</th>
+    <th>CSV</th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% current_user.reports.order("created_at DESC").each do |r| %>
+    <tr>
+      <td><%= link_to r.title, workflows_management_path(r) %></td>
+      <td><%= simple_time r.created_at %></td>
+      <td><%= Approval.where(:approval_form_id => r.id).count %>人</td>
+      <td><%= link_to image_tag('/images/s_search.png'), workflows_summaries_path(:approval_form_id => r.id) %></td>
+      <td><%= link_to image_tag('/images/s_download.png'), workflows_summaries_path(r, :format => :csv) %></td>
+      <td><%= link_to image_tag('/images/s_config.png'), edit_workflows_management_path(r) %></td>
+      <td>
+        <%= link_to image_tag('/images/s_delete.png'), 
+                    workflows_management_path(r), 
+                    :confirm => 'すべての回答も消えてしまいます。本当に削除してもよろしいですか？', 
+                    :method => :delete, 
+                    :id => 'remove' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<p><%= link_to "新規作成", new_workflows_management_path %></p>
+<br />
+<br />
+<br />

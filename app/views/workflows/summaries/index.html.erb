@@ -1,0 +1,30 @@
+<section class="summary">
+<h2><%= @form.title %>の内容一覧</h2>
+<table class='base'>
+  <tr>
+    <th>回答者</th>
+    <th>回答日時</th>
+    <% @form.fields.each do |f| %>
+      <th><%= f.title %></th>
+    <% end %>
+  </tr>
+  <% @answers.each do |a| %>
+    <tr>
+      <td><%= a.user.name %></td>
+      <td><%= a.created_at %></td>
+      <% a.fields.each do |af| %>
+        <td><%= af.value %></td>
+      <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>申請状態</td>A
+      <td>
+        <% a.workflows.each do |wf| %>
+          ステップ: <%= wf.step %>, 承認者: <%= C.user_type.disp(wf.user_type) %>, 状態: <%= wf.accept ? "承認済み" : "未承認" %> <br />
+        <%- end -%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</section>

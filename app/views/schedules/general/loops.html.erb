@@ -1,0 +1,13 @@
+<%#= render :partial => "/schedules/general/loops/header" %>
+<%#= render :partial => "/schedules/general/loops/" + @type %>
+<%#= render :partial => "/schedules/general/loops/fotter", :locals => { :type => @type } %>
+
+<% unless @type == ::Schedule::NoLoop::CONST %>
+  <%= render :partial => "/schedules/general/loops/header" %>
+<% end %>
+
+<%= render :partial => "/schedules/general/loops/" + @type, :locals => { :schedule => @schedule, :type => @type } %>
+
+<% unless @type == ::Schedule::NoLoop::CONST %>
+  <%= render :partial => "/schedules/general/loops/fotter", :locals => { :schedule => @schedule, :type => @type } %>
+<% end %>

@@ -1,0 +1,2 @@
+module Users::EntryHelper
+end

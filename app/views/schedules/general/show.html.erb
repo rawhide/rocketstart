@@ -1,0 +1,58 @@
+<table>
+  <thead>
+    <tr>
+      <td>
+        予定の詳細&nbsp;
+        登録情報：
+        <%= @schedule.owner.name %>&nbsp;
+        <%= @schedule.created_at %>
+      </td>
+      <td><%= link_to "カレンダーに戻る", dashboard_path(:year => @schedule.start_year, :month => @schedule.start_month-1) %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p>タイトル</p>
+        <p><%= @schedule.title %></p>
+        <p>日時</p>
+        <p>
+          <% if @schedule.all_day == 1 %>
+            終日
+          <% else %>
+            <%= simple_date @schedule.start_year, @schedule.start_month, @schedule.start_day, @schedule.start_hour, @schedule.start_minute %>
+            〜
+            <%= simple_date @schedule.end_year, @schedule.end_month, @schedule.end_day, @schedule.end_hour, @schedule.end_minute %>
+          <% end %>
+        </p>
+        <p>メモ</p>
+        <p><%= @schedule.memo %></p>
+      </td>
+      <td>
+        <p>参加者</p>
+        <p><%= @schedule.owner.name %>(オーナー)</p>
+        <p><% @members.each do |m| %><%= m.name %><% end %></p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= link_to(image_tag('s_config.png'), edit_schedules_general_path(@schedule)) if @schedule.owner.id == current_user.id %>
+        <%- if @schedule.no_loop? -%>
+        <%= link_to image_tag('s_delete.png'), 
+          schedules_general_path(@schedule, :mine => true), 
+              :confirm => '本当に削除してもよろしいですか？', 
+              :method => :delete, 
+              :id => 'remove' %>
+        <%- end -%>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%- unless @schedule.no_loop? -%>
+
+<%= form_tag({},:method => :delete) do %>
+  <%= submit_tag "この予定のみ削除する", :name => 'update_mine' %>
+  <%= submit_tag "この予定以降を削除する", :name => 'update_after' %>
+  <%= submit_tag "くり返し予定を削除する", :name => 'update_all' %>
+  <%- end -%>
+  <%- end-%>

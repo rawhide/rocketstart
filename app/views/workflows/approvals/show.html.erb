@@ -1,0 +1,28 @@
+<div id="preview">
+<p>
+  <b>Name:</b>
+  <%= @answer.name %>
+</p>
+<p>
+  <b>Date:</b>
+  <%= @answer.created_at %>
+</p>
+
+<p>
+  <b>Repot:</b>
+  <%= @answer.report.id %>
+  <%= @answer.report.form_name %>
+</p>
+
+<table>
+  <% @answer.answers_fields.each do |af| %>
+    <tr>
+      <td><%= af.field.title %></td>
+      <td><%= af.field.item %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+
+<%= link_to 'Back', report_answers_path %>

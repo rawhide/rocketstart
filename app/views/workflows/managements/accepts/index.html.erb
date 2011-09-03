@@ -1,0 +1,36 @@
+<script type="text/javascript">
+<!-- 
+  $(document).ready(function(){
+    $("s_check").tablesorter();
+  });
+-->
+</script>
+
+<h2>承認待ち申請書一覧</h1>
+<%- if (waiting_workflows = current_user.waiting_workflows).present? -%>
+<table class="base">
+  <thead>
+  <tr>
+    <th>申請者</th>
+    <th>申請日時</th>
+    <th>申請書名</th>
+    <th>詳細</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% waiting_workflows.each do |wf| %>
+    <tr>
+      <td><%= wf.user.name %></td>
+      <td><%= wf.approval.created_at.to_s(:jp) %></td>
+      <td><%= wf.approval.approval_form.title %></td>
+      <td><%= link_to "詳細", edit_workflows_managements_accept_path(wf.approval) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%- else -%>
+<p>承認待ちの申請書はありません。</p>  
+<%- end -%>
+<br />
+<br />
+<br />
