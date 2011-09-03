@@ -104,7 +104,6 @@ function FormPresenter(image, h) {
     for (var s in status) {
       text = text + "\n" + s + "=" + status[s];
     }
-    alert(text);
   }
 
 }
