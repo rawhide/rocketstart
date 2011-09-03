@@ -1,4 +1,4 @@
-Railstar::Application.routes.draw do
+Rocketstart::Application.routes.draw do
 
   root :to => "general#index"
 

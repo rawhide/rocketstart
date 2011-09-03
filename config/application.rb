@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Railstar
+module Rocketstart
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -40,6 +40,6 @@ module Railstar
     config.assets.enabled = true
 
     # Add config
-    config.product_name = "Railstar"
+    config.product_name = "Rocketstart"
   end
 end
