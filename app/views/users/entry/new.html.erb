@@ -69,7 +69,8 @@
           validations: [
             { type: "not_null", msg: "" }
           ]
-        },
+        }
+        /* 現在FormPresenterは、checkbox,selectbox,raioに対応していない。
         company_user_administrator_sex: {
           event: "click",
           normal_css: [ "background-color: #ffffff" ],
@@ -77,7 +78,7 @@
           validations: [
             { type: "checked", msg: "" }
           ]
-        },
+        }
         company_user_administrator_birthday: {
           event: "keyup",
           normal_css: [ "background-color: #ffffff" ],
@@ -86,6 +87,7 @@
             { type: "not_null", msg: "" }
           ]
         }
+        */
       }
     ).load().event_watch();
   });

@@ -1,16 +1,3 @@
-/*
-  FormPresenter
-
-  対応しているインプットタイプ
-    1,text
-    2,textarea
-  
-  対応していないインプットタイプ
-    1,selectbox
-    2,checkbox
-    3,radio
-*/
-
 function FormPresenter(image, h) {
   var image = image;
   var hash = h;
@@ -71,7 +58,6 @@ function FormPresenter(image, h) {
   }
 
   var checked = function(k, vs) {
-    alert("mmm");
     if ($("#" + k).is(":checked") == true) { print_success(k, vs); } 
     else { print_notice(k, vs); }
   }
@@ -118,7 +104,7 @@ function FormPresenter(image, h) {
     for (var s in status) {
       text = text + "\n" + s + "=" + status[s];
     }
-    alert(text);
+    //alert(text);
   }
 
 }
